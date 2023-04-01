@@ -1,5 +1,5 @@
 <?php
-namespace StaticPress;
+namespace Staticpress;
 
 use Slim\Factory\AppFactory;
 use Slim\Views\{Twig, TwigMiddleware};
