@@ -1,10 +1,12 @@
 <?php
+namespace StaticPress;
+
 use Slim\Factory\AppFactory;
 use Slim\Views\{Twig, TwigMiddleware};
 use Slim\Psr7\{Response, Request};
 use Twig\Error\LoaderError;
 
-class StaticPress
+class App
 {
     private \Slim\App $app;
 
