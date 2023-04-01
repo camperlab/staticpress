@@ -2,6 +2,11 @@
     "name": "camperlab/staticpress",
     "description": "CMS",
     "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "StatisPress\\": "src/"
+        }
+    },
     "require": {
         "slim/slim": "4.*",
         "slim/psr7": "^1.6",

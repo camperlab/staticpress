@@ -1,21 +1,23 @@
 <?php
-
 use Slim\Factory\AppFactory;
-use Slim\Views\Twig;
-use Slim\Views\TwigMiddleware;
-use Slim\Psr7\Request;
-use Slim\Psr7\Response;
+use Slim\Views\{Twig, TwigMiddleware};
+use Slim\Psr7\{Response, Request};
+use Twig\Error\LoaderError;
 
 class StaticPress
 {
-    private $app;
+    private \Slim\App $app;
 
     public function __construct()
     {
         $this->app = AppFactory::create();
     }
 
-    public function run()
+    /**
+     * @return void
+     * @throws LoaderError
+     */
+    public function run(): void
     {
         $twig = Twig::create(__DIR__, ['cache' => false]);
         $this->app->add(TwigMiddleware::create($this->app, $twig));
@@ -33,6 +35,5 @@ class StaticPress
 
             return $response;
         });
-
     }
 }
