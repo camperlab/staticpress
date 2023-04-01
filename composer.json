@@ -1,6 +1,7 @@
 {
     "name": "camperlab/staticpress",
     "description": "CMS",
+    "minimum-stability": "dev",
     "require": {
         "slim/slim": "4.*",
         "slim/psr7": "^1.6",
