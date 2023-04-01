@@ -21,21 +21,26 @@ class App
      */
     public function run(): void
     {
-        $twig = Twig::create(__DIR__, ['cache' => false]);
+        $twig = Twig::create(__DIR__ . '/../public/', ['cache' => false]);
 
         $this->app->add(TwigMiddleware::create($this->app, $twig));
         $this->app->get('/', function (Request $request, Response $response, $args) {
 
             if (file_exists(__DIR__ . '/hot')) {
-                $hotContent = file_get_contents('hot');
+                $hotContent = file_get_contents(__DIR__ . '/../public/hot');
                 $view = Twig::fromRequest($request);
                 return $view->render($response, 'index-hot.html', [
                     'address' => $hotContent
                 ]);
             } else {
-                $response->getBody()->write(file_get_contents(__DIR__ . '/index.html'));
+                $response->getBody()->write(file_get_contents(__DIR__ . '/../public/index.html'));
             }
 
+            return $response;
+        });
+
+        $this->app->get('/api/test', function(Request $request, Response $response) {
+            $response->getBody()->write('Hello');
             return $response;
         });
 
