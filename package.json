@@ -19,5 +19,10 @@
     "@vitejs/plugin-vue": "^4.0.0",
     "sass": "^1.60.0",
     "vite": "^4.1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "StaticPress\\": "src/"
+    }
   }
 }
