@@ -20,6 +20,7 @@ class StaticPress
     public function run(): void
     {
         $twig = Twig::create(__DIR__, ['cache' => false]);
+
         $this->app->add(TwigMiddleware::create($this->app, $twig));
         $this->app->get('/', function (Request $request, Response $response, $args) {
 
@@ -35,5 +36,7 @@ class StaticPress
 
             return $response;
         });
+
+        $this->app->run();
     }
 }
